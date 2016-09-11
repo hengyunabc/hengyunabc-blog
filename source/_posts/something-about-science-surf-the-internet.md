@@ -6,7 +6,7 @@ tags:
 - 代理
 
 categories:
- - 网络
+ - 技术
 
 ---
 
@@ -432,7 +432,7 @@ app <= (decrypt) local socks server <= (encrypt) shadowsocks server <= real host
 
 其它的一些东东：
 - 一个端口一个密码，没有用户的概念
-- 支持多个workder并发
+- 支持多个worker并发
 - 协议简单，比socks协议还要简单，抽取了socks协议的部分
 
 ###shadowsoks的优点
@@ -521,11 +521,11 @@ https://github.com/ashi009/bestroutetb
 
 ## 推荐的办法
 完全免费
-- chrome + switchsharp + http proxy
+- chrome + switchsharp/SwitchyOmega + http proxy
 - goagent
 
 程序员的推荐
-- chrome + switchsharp + socks5 proxy
+- chrome + switchsharp/SwitchyOmega + socks5 proxy
 - aws免费一年的服务器/其它国外免费云主机，节点位置决定速度，推荐东京机房
 - shadowsocks
 

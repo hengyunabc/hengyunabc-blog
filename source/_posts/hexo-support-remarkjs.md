@@ -3,6 +3,10 @@ date: 2015-01-19 23:17:49
 tags: 
   - remarkjs
   - hexo
+  
+categories:
+ - 技术
+ 
 ---
 remarkjs是一个比较流行的用md格式写slides的库 ：[https://github.com/gnab/remark](https://github.com/gnab/remark "")
 

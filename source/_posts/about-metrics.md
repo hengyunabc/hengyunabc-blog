@@ -1,9 +1,16 @@
-title: metrics/度量
+title: 基于dropwizard/metrics ，kafka，zabbix构建应用统计数据收集展示系统
 date: 2015-02-10 11:45:14
 tags:
  - java
  - metrics
+ - zabbix
+ - kafka
+
+categories:
+ - 技术
+
 ---
+
 
 ##想要实现的功能
 - 应用可以用少量的代码，实现统计某类数据的功能

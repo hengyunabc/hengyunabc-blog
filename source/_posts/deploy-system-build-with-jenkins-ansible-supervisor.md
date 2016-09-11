@@ -1,10 +1,15 @@
-title: deploy-system-build-with-jenkins-ansible-supervisor
+title: 一步一步用jenkins，ansible，supervisor打造一个web构建发布系统
 date: 2015-02-12 14:55:04
 tags:
  - jenkins
  - ansible
  - supervisor
+ - docker
  - devops
+ - 运维
+
+categories:
+ - 技术
  
 ---
 
@@ -210,7 +215,7 @@ sudo apt-get install sshpass
 ```
 
 ##演示的docker image
-如果只是想查看实际运行效果，可以直接把 hengyunabc/jenkins-ansible-supervisor-deploy 这个image拉下来，运行即可。
+如果只是想查看实际运行效果，可以直接把 hengyunabc/jenkins-ansible-supervisor 这个image拉下来，运行即可。
 
 ```bash
 docker run -it -p 8080:8080 -p 8101:8101 -p 9001:9001 --name='jenkins' hengyunabc/jenkins-ansible-supervisor
