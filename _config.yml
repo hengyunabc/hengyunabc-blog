@@ -69,5 +69,5 @@ theme: jacman
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: github
+  type: git
   repo: git@github.com:hengyunabc/hengyunabc.github.io.git
