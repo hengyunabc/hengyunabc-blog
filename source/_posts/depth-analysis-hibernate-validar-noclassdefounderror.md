@@ -224,9 +224,9 @@ http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-5.html#jvms-5.5
 
 从规范里可以看到初始一个类/接口有12步，比较重要的两步都用黑体标记出来了：
 
-* 5. If the Class object for C is in an erroneous state, then initialization is not possible. Release LC and throw a NoClassDefFoundError.
+* 5: If the Class object for C is in an erroneous state, then initialization is not possible. Release LC and throw a NoClassDefFoundError.
 
-* 11. Otherwise, the class or interface initialization method must have completed abruptly by throwing some exception E. If the class of E is not Error or one of its subclasses, then create a new instance of the class ExceptionInInitializerError with E as the argument, and use this object in place of E in the following step.
+* 11: Otherwise, the class or interface initialization method must have completed abruptly by throwing some exception E. If the class of E is not Error or one of its subclasses, then create a new instance of the class ExceptionInInitializerError with E as the argument, and use this object in place of E in the following step.
 
 ### 第一次尝试加载Version类时
 

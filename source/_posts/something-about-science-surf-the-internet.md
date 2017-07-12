@@ -10,7 +10,7 @@ categories:
 
 ---
 
-##知其所以然
+## 知其所以然
 
 本文不是教程向，倾向于分析科学上网的一些原理。知其所以然，才能更好地使用工具，也可以创作出自己的工具。
 
@@ -22,7 +22,7 @@ categories:
 - socks proxy
 
 
-##一个http请求发生了什么？
+## 一个http请求发生了什么？
 这个是个比较流行的面试题，从中可以引出很多的内容。大致分为下面四个步骤：
 - dns解析，得到IP
 - 向目标IP发起TCP请求
@@ -37,12 +37,12 @@ http://stackoverflow.com/questions/2092527/what-happens-when-you-type-in-a-url-i
 
 http://div.io/topic/609?page=1  从FE的角度上再看输入url后都发生了什么
 
-##DNS/域名解析
+## DNS/域名解析
 可以看到dns解析是最初的一步，也是最重要的一步。比如访问亲友，要知道他的正确的住址，才能正确地上门拜访。
 
 dns有两种协议，一种是UDP（默认），一种是TCP。
 
-###udp 方式，先回应的数据包被当做有效数据
+### udp 方式，先回应的数据包被当做有效数据
 在linux下可以用dig来检测dns。国内的DNS服务器通常不会返回正常的结果。
 下面以google的8.8.8.8 dns服务器来做测试，并用wireshark来抓包，分析结果。
 ```
@@ -54,7 +54,7 @@ dig @8.8.8.8  www.youtube.com
 
 但是，对于dns客户端来说，它只会取最快回应的的结果，后面的正确结果被丢弃掉了。**因为中间被插入了污染包，所以即使我们配置了正确的dns服务器，也解析不到正确的IP。**
 
-###tcp 方式，有时有效，可能被rest
+### tcp 方式，有时有效，可能被rest
 再用TCP下的DNS来测试下:
 ```
 dig @8.8.8.8 +tcp   www.youtube.com
@@ -99,7 +99,7 @@ x-connection-hash: 0f5eab0ea2d6309109f15447e1da6b13
 x-response-time: 2
 ```
 
-###黑名单/白名单
+### 黑名单/白名单
 想要获取到正确的IP，自然的黑名单/白名单两种思路。
 
 下面列出一些相关的项目：
@@ -108,7 +108,7 @@ https://github.com/holmium/dnsforwarder
 https://code.google.com/p/huhamhire-hosts/
 https://github.com/felixonmars/dnsmasq-china-list
 ```
-###本地DNS软件
+### 本地DNS软件
 - 修改hosts文件
 相信大家都很熟悉，也有一些工具可以自动更新hosts文件的。
 - 浏览器pac文件
@@ -120,7 +120,7 @@ https://github.com/felixonmars/dnsmasq-china-list
 ```
 /usr/sbin/dnsmasq --no-resolv --keep-in-foreground --no-hosts --bind-interfaces --pid-file=/run/sendsigs.omit.d/network-manager.dnsmasq.pid --listen-address=127.0.1.1 --conf-file=/var/run/NetworkManager/dnsmasq.conf
 ```
-###路由器智能DNS
+### 路由器智能DNS
 基于OpenWRT/Tomoto的路由器可以在上面配置dns server，从而实现在路由器级别智能dns解析。现在国内的一些路由器是基于OpenWRT的，因此支持配置dns服务器。
 参考项目：
 ```
@@ -208,7 +208,7 @@ http proxy通常会尽量原样发送，因为很多程序都扩展了http metho
 
 客户端用OPTIONS 请求可以探测服务器支持的方法。但是意义不大。
 
-##https proxy
+## https proxy
 当访问一个https网站时，https://github.com
 
 先发送connect method，如果支持，会返回200
@@ -218,21 +218,21 @@ CONNECT github.com:443 HTTP/1.1
 Host: github.com
 Proxy-Connection: keep-alive
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36
- 
+
 HTTP/1.1 200 OK
 ```
-###http tunnel
-http://en.wikipedia.org/wiki/HTTP_tunnel#HTTP_CONNECT_tunneling 
+### http tunnel
+http://en.wikipedia.org/wiki/HTTP_tunnel#HTTP_CONNECT_tunneling
 
 通过connect method，http proxy server实际上充当tcp转发的中间人。
 比如，用nc 通过http proxy来连42端口：
 ```bash
-$ nc -x10.2.3.4:8080 -Xconnect host.example.com 42 
+$ nc -x10.2.3.4:8080 -Xconnect host.example.com 42
 ```
 
 原理是利用CONNECT方法，让http proxy服务器充当中间人。
 
-###https proxy的安全性？
+### https proxy的安全性？
 proxy server可以拿到什么信息？
 
 通过一个http proxy去访问支付宝是否安全？
@@ -259,7 +259,7 @@ http://fex.baidu.com/blog/2014/06/danger-behind-popup-login-dialog/
 **所以，尽量不要使用来路不明的http/https proxy，使用公开的wifi也要小心。**
 
 
-##goagent工作原理
+## goagent工作原理
 
 - local http/https proxy
 - 伪造https证书，导入浏览器信任列表里
@@ -295,7 +295,7 @@ https://github.com/AppScale/gae_sdk/blob/master/google/appengine/api/taskqueue/t
     def _get_cert(commonname, sans=()):
 ```
 
-###为什么goagent可以看视频？
+### 为什么goagent可以看视频？
 
 因为很多网站都是http协议的。有少部分是rmtp协议的，也有是rmtp over http的。
 
@@ -313,7 +313,7 @@ Server:YOUKU.GZ
 ```
 可以看到，有ETag，有长度信息等。
 
-###goagent缺点
+### goagent缺点
 - 只是http proxy，不能代理其它协议
 - google的IP经常失效
 - 不支持websocket协议
@@ -321,7 +321,7 @@ Server:YOUKU.GZ
 
 ## vpn
 
-###流行的vpn类型
+### 流行的vpn类型
 - PPTP，linux pptpd，安全性低，不能保证数据完整性或者来源，MPPE加密暴力破解
 - L2TP，linux xl2tpd，预共享密钥可以保证安全性
 - SSTP，基于HTTPS，微软提出。linux开源实现SoftEther VPN
@@ -346,15 +346,15 @@ Server:YOUKU.GZ
 
 https://technet.microsoft.com/zh-cn/library/cc771298(v=ws.10).aspx
 
-###网页版的SSL VPN
+### 网页版的SSL VPN
 有些企业，或者学校里，会有这种VPN：
  - 网页登陆帐号
  - 设置IE代理，为远程服务器地址
  - 通过代理浏览内部网页
- 
+
 这种SSL VPN原理很简单，就是一个登陆验证的http proxy，其实并不能算是VPN？
 
-###新型的staless vpnVPN，sigmavpn/ShadowVPN
+### 新型的staless vpnVPN，sigmavpn/ShadowVPN
 
 这种新型VPN的原理是，利用虚拟的网络设备TUN和TAP，把请求数据先发给虚拟设备，然后把数据加密转发到远程服务器。（VPN都这原理？）
 
@@ -372,7 +372,7 @@ https://code.google.com/p/sigmavpn/wiki/Introduction
 
 ### ubuntu pptp vpn server安装
 ubuntu官方参考文档：
-https://help.ubuntu.com/community/PPTPServer 
+https://help.ubuntu.com/community/PPTPServer
 
 - vps 要开启ppp和nat网络转发的功能
 
@@ -389,7 +389,7 @@ iptables -A FORWARD -p tcp --syn -s 192.168.0.0/24 -j TCPMSS --set-mss 1200
 - socks5
 
 socks5支持udp，所以如果客户端把dns查询也走socks的话，那么就可以直接解决dns的问题了。
-###socks proxy 握手的过程
+### socks proxy 握手的过程
 socks5流程
 - 客户端查询服务器支持的认证方式
 - 服务器回应支持的认证方式
@@ -401,7 +401,7 @@ socks5流程
 socks协议其实是相当简单的，用wireshark抓包，结合netty-codec-socks，很容易可以理解其工作过程。
 https://github.com/netty/netty/tree/master/codec-socks
 
-###ssh socks proxy
+### ssh socks proxy
 如果有一个外国的服务器，可以通过ssh连接登陆，那么可以很简单地搭建一个本地的socks5代理。
 
 XShell可以通过“转移规则”来配置本地socks服务器，putty也有类似的配置：
@@ -415,7 +415,7 @@ ssh还有一些端口转发的技巧，这对于测试网络程序，绕过防�
 
 参考：http://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/
 
-###shadowsocks的工作原理
+### shadowsocks的工作原理
 shadowsocks是非常流行的一个代理工具，其原理非常简单。
 
 - 客户端服务器预共享密码
@@ -426,7 +426,7 @@ shadowsocks是非常流行的一个代理工具，其原理非常简单。
 
 ```
 app => local socks server(encrypt) => shadowsocks server(decrypt) => real host
-                                                                       
+
 app <= (decrypt) local socks server <= (encrypt) shadowsocks server <= real host
 ```
 
@@ -435,12 +435,12 @@ app <= (decrypt) local socks server <= (encrypt) shadowsocks server <= real host
 - 支持多个worker并发
 - 协议简单，比socks协议还要简单，抽取了socks协议的部分
 
-###shadowsoks的优点
+### shadowsoks的优点
 - 中间没有任何握手的环节，直接是TCP数据流
 - 速度快
 
 
-###shadowsocks的安全性
+### shadowsocks的安全性
 - 服务器可以解出所有的TCP/UDP数据
 - 中间人攻击，重放攻击
 
@@ -448,14 +448,14 @@ app <= (decrypt) local socks server <= (encrypt) shadowsocks server <= real host
 
 在使用shadowsocks的情况下，https通迅是安全的，但是仍然有危险，参见上面http proxy安全的内容。
 
-###vpn和socks代理的区别
+### vpn和socks代理的区别
 从原理上来说，socks代理会更快，因为转发的数据更少。
 
 因为vpn转发的是ppp数据包，ppp协议是数据链路层(data link layer)的协议。socks转发的是TCP/UDP数据，是传输(transport)层。
 
 VPN的优点是很容易配置成全局的，这对于很多不能配置代理的程序来说很方便。而配置全局的socks proxy比较麻烦，目前貌似还没有简单的方案。
 
-###linux下一些软件配置代理的方法
+### linux下一些软件配置代理的方法
 
 - bash/shell
 
@@ -483,7 +483,7 @@ https://help.ubuntu.com/community/AptGet/Howto#Setting_up_apt-get_to_use_a_http-
 现在大部分软件都可以设置代理。
 gnome和kde都可以设置全局的代理。
 
-###linux下不支持代理的程序使用socks代理：tsocks
+### linux下不支持代理的程序使用socks代理：tsocks
 tsocks利用LD_PRELOAD机制，代理程序里的connect函数，然后就可以代理所有的TCP请求了。
 不过dns请求，默认是通过udp来发送的，所以tsocks不能代理dns请求。
 
@@ -498,7 +498,7 @@ LD_PRELOAD=/usr/lib/libtsocks.so wget http://www.facebook.com
 
 
 
-##基于路由器的方案
+## 基于路由器的方案
 
 基于路由器的方案有很多，原理和本机的方案是一样的，只不过把这些措施前移到路由器里。
 
@@ -516,7 +516,7 @@ https://github.com/lifetyper/FreeRouter_V2
 
 https://gist.github.com/wen-long/8644243
 
-https://github.com/ashi009/bestroutetb 
+https://github.com/ashi009/bestroutetb
 
 
 ## 推荐的办法
@@ -539,10 +539,9 @@ https://github.com/ashi009/bestroutetb
 商业软件安全性自己考虑
 
 
-##总结
+## 总结
 
 - 新技术层出不穷
 - 越流行，越容易失效
 - 实现一个proxy其实相当简单
 - 知其所以然，更好使用工具，也可以创作出自己的工具。
-
