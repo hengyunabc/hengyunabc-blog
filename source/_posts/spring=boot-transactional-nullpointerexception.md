@@ -1,7 +1,6 @@
 ---
 title: 深入Spring Boot：排查@Transactional引起的NullPointerException
 date: 2017-12-14 22:58:28
-sticky: 10
 tags:
  - spring
  - spring-boot

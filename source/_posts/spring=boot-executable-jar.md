@@ -1,7 +1,6 @@
 ---
 title: spring boot executable jar/war 原理
 date: 2016-04-03 20:58:28
-sticky: 10
 tags:
  - spring
  - spring-boot

@@ -12,32 +12,35 @@ categories:
 ---
 
 
-##想要实现的功能
+## 想要实现的功能
 - 应用可以用少量的代码，实现统计某类数据的功能
 - 统计的数据可以很方便地展示
 
 
-##metrics
+## metrics
 metrics，按字面意思是度量，指标。
 
 举具体的例子来说，一个web服务器：
+
 - 一分钟内请求多少次？
 - 平均请求耗时多长？
 - 最长请求时间？
 - 某个方法的被调用次数，时长？
 
 以缓存为例：
+
 - 平均查询缓存时间？
 - 缓存获取不命中的次数/比例？
 
 以jvm为例：
+
 - GC的次数？
 - Old Space的大小？
 
 在一个应用里，需要收集的metrics数据是多种多样的，需求也是各不同的。需要一个统一的metrics收集，统计，展示平台。
 
 
-##流行的metrics的库
+## 流行的metrics的库
 https://github.com/dropwizard/metrics
 java实现，很多开源项目用到，比如hadoop，kafka。下面称为dropwizard/metrics。
 
@@ -50,12 +53,12 @@ http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-m
 
 spring boot里的metrics很多都是参考dropwizard/metrics的。
 
-##metrics的种类
+## metrics的种类
 dropwizard/metrics 里主要把metrics分为下面几大类：
 
 https://dropwizard.github.io/metrics/3.1.0/getting-started/
 
-####Gauges
+### Gauges
 gauge用于测量一个数值。比如队列的长度：
 ```java
 public class QueueManager {
@@ -72,7 +75,9 @@ public class QueueManager {
     }
 }
 ```
-####Counters
+
+### Counters
+
 counter是AtomicLong类型的gauge。比如可以统计阻塞在队列里的job的数量：
 ```java
 private final Counter pendingJobs = metrics.counter(name(QueueManager.class, "pending-jobs"));
@@ -85,7 +90,7 @@ public Job takeJob() {
     return queue.take();
 }
 ```
-####Histograms
+### Histograms
 histogram统计数据的分布。比如最小值，最大值，中间值，还有中位数，75百分位, 90百分位, 95百分位, 98百分位, 99百分位, and 99.9百分位的值(percentiles)。
 
 比如request的大小的分布：
@@ -97,7 +102,7 @@ public void handleRequest(Request request, Response response) {
     responseSizes.update(response.getContent().length);
 }
 ```
-####Timers
+### Timers
 timer正如其名，统计的是某部分代码/调用的运行时间。比如统计response的耗时：
 ```java
 private final Timer responses = metrics.timer(name(RequestHandler.class, "responses"));
@@ -112,7 +117,7 @@ public String handleRequest(Request request, Response response) {
     }
 }
 ```
-####Health Checks
+### Health Checks
 这个实际上不是统计数据。是接口让用户可以自己判断系统的健康状态。如判断数据库是否连接正常：
 ```java
 final HealthCheckRegistry healthChecks = new HealthCheckRegistry();
@@ -135,7 +140,7 @@ public class DatabaseHealthCheck extends HealthCheck {
 }
 ```
 
-####Metrics Annotation
+### Metrics Annotation
 利用dropwizard/metrics 里的annotation，可以很简单的实现统计某个方法，某个值的数据。
 如：
 ```java

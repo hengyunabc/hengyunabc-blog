@@ -1,7 +1,6 @@
 ---
 title: 深入Spring Boot：排查expected single matching bean but found 2的异常
 date: 2017-12-09 20:58:28
-sticky: 10
 tags:
  - spring
  - spring-boot

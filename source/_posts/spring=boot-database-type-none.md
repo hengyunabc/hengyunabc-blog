@@ -1,7 +1,6 @@
 ---
 title: 深入Spring Boot：排查 Cannot determine embedded database driver class for database type NONE
 date: 2017-12-09 22:58:28
-sticky: 10
 tags:
  - spring
  - spring-boot
