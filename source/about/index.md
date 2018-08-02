@@ -12,6 +12,12 @@ date: 2015-01-19 20:00:00
 ## 联系
 * Email: hengyunabc#gmail.com （#替换为@）
 
+## 微信众公号
+
+横云断岭的专栏
+
+![横云断岭的专栏](/img/qrcode_gongzhonghao.jpg)
+
 ## 链接
 
 * [Github](https://github.com/hengyunabc)

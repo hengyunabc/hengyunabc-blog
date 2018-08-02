@@ -1,6 +1,6 @@
 ---
 title: 深入Spring Boot系列
-date: 2018-07-22 16:58:28
+date: 2118-07-22 16:58:28
 sticky: 10
 tags:
  - spring
@@ -23,6 +23,7 @@ categories:
 * [深入Spring Boot：实现对Fat Jar jsp的支持](/spring-boot-fat-jar-jsp-sample)
 * [深入Spring Boot：快速集成Dubbo + Hystrix](/spring-boot-dubbo-hystrix/)
 * [正确实现用spring扫描自定义的annotation](/spring-scan-annotation/)
+* [深入Spring Boot：编写兼容Spring Boot1和Spring Boot2的Starter](/spring-boot-starter-compatibility)
 
 ## 排查问题
 
