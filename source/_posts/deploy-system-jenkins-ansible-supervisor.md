@@ -26,7 +26,7 @@ https://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit
 
 下面将要介绍的完整流程是：
 
-1. github作为源代码仓库
+- github作为源代码仓库
 - jenkins做为打包服务器，Web控制服务器
 - ansible把war包，发布到远程机器
    1. 安装python-pip
@@ -41,7 +41,7 @@ https://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit
 
 在文章的最后，会给出一个完整的docker镜像，大家可以自己运行查看实际效果。
 
-##安装jenkins
+## 安装jenkins
 - 先用docker来启动一个名为“jenkins”的容器：
 
 ```bash
@@ -102,7 +102,7 @@ JDK可以选择刚才安装好的openjdk，也可以选择自动安装oracle jdk
 Git会自动配置好。
 
 
-##配置ssh服务
+## 配置ssh服务
 安装sshd服务：
 ```bash
 sudo apt-get install openssh-server sshpass
@@ -130,7 +130,7 @@ passwd
 ssh root@127.0.0.1
 ```
 
-##安装ansible
+## 安装ansible
 在jenkins这个container里，继续安装ansible，用来做远程发布用。
 
 先安装pip，再用pip安装ansible：
@@ -139,7 +139,7 @@ sudo apt-get install python-pip python-dev build-essential git
 sudo pip install ansible
 ```
 
-##配置ansible playbook
+## 配置ansible playbook
 把自动发布的ansible playbook clone到本地：
 
 https://github.com/hengyunabc/jenkins-ansible-supervisor-deploy
@@ -149,7 +149,7 @@ cd /opt/ansible
 git clone https://github.com/hengyunabc/jenkins-ansible-supervisor-deploy
 ```
 
-##在jenkins上建立deploy job
+## 在jenkins上建立deploy job
 - 新建一个maven的项目/job，名为spring-mvc-showcase
 ![jenkins-new-job-maven](/img/jenkins-new-job-maven.png)
 
@@ -185,7 +185,7 @@ ansible-playbook -i hosts site.yml --verbose --extra-vars "target_host=$target_h
 ```
 最后，保存。
 
-##测试构建
+## 测试构建
 一切都配置好之后，可以在jenkins界面上，在左边，选择“Build with Parameters”，“开始”来构建项目了。
 
 如果构建成功的话，就可以打开 http://localhost:8101 ，就可以看到spring-mvc-showcase的界面了。
@@ -204,7 +204,7 @@ ansible-playbook -i hosts site.yml --verbose --extra-vars "target_host=$target_h
   
 文件里增加相应的host配置就可以了。
 
-##其它的一些东东
+## 其它的一些东东
 如果提示
 ```
 to use the 'ssh' connection type with passwords, you must install the sshpass program
@@ -214,14 +214,14 @@ to use the 'ssh' connection type with passwords, you must install the sshpass pr
 sudo apt-get install sshpass
 ```
 
-##演示的docker image
+## 演示的docker image
 如果只是想查看实际运行效果，可以直接把 hengyunabc/jenkins-ansible-supervisor 这个image拉下来，运行即可。
 
 ```bash
 docker run -it -p 8080:8080 -p 8101:8101 -p 9001:9001 --name='jenkins' hengyunabc/jenkins-ansible-supervisor
 ```
 
-##总结
+## 总结
 
 - jenkins提供了丰富的插件，可以定制自己的打包这过程，并可以提供完善的权限控制
 - ansible可以轻松实现远程部署，配置环境等工作，轻量简洁，功能强大

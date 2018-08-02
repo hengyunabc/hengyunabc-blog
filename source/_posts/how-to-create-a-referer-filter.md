@@ -31,7 +31,7 @@ categories:
 - [Stripping the Referer in a Cross Domain POST request](http://webstersprodigy.net/2013/02/01/stripping-the-referer-in-a-cross-domain-post-request/)
 
 防御CSRF目前比较好的办法是CSRF Token，参考另一篇blog：[Cookie & Session & CSRF](/cookie-and-session-and-csrf)。
-##收集资料
+## 收集资料
 
 先搜索下前人有没有这类相关的工作。
 搜索到的关于RefererFilter的信息并不多。
@@ -47,7 +47,7 @@ https://svn.apache.org/repos/asf/sling/tags/org.apache.sling.security-1.0.0/src/
 
 https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet
 
-##确定方案
+## 确定方案
 - 默认拦截“POST|PUT|DELETE|CONNECT|PATCH”的请求
 - HttpServletRequest里提取到referer
 - 用java.net.URL来提取referer里的host
@@ -59,7 +59,7 @@ https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Che
 - 很难判断一个复杂的正则表达式是否真的正确
 - URL是很复杂的，不要手动处理URL，参考[URL的语法](http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax)
 
-##思考需要提供的配置项
+## 思考需要提供的配置项
 实际最终提供了这些配置项，考虑到像host这样的配置不是经常变动的，所以没有提供从外部配置文件加载配置的功能。
 ```plain
 matchMethods   即拦截的方法，默认值"POST|PUT|DELETE|CONNECT|PATCH"，通常不用配置
@@ -76,14 +76,14 @@ bAllowLocalhost   是否允许localhost, 127.0.0.1 这样的referer的请求，�
 bAllowAllIPAndHost  是否允许本机的所有IP和host的referer请求，默认是false
  ```
 
-##编码的细节
+## 编码的细节
 * 重定向时，注意加上contextPath
   ```
   response.sendRedirect(request.getContextPath() + redirectPath);
   ```
  * 构造URL时，非法的URL会抛出RuntimeException，需要处理
 
-##正确地处理URL
+## 正确地处理URL
 感觉这个有必要再次说明下：
 
 http://docs.oracle.com/javase/tutorial/networking/urls/urlInfo.html
@@ -107,7 +107,7 @@ http://docs.oracle.com/javase/tutorial/networking/urls/urlInfo.html
     }
 ```
 
-##用curl来测试
+## 用curl来测试
 最后用curl来做了一些测试：
 ```
 curl  --header "Referer:http://test.com" http://localhost:8080/filter-test/referer
@@ -118,7 +118,7 @@ curl -X POST --header "Referer:http://abc.test.com" http://localhost:8080/filter
 curl -X POST --header "Referer:http://abc.hello.com.test.com" http://localhost:8080/filter-test/referer
 ```
 
-##实现的代码
+## 实现的代码
 
 ```java
 import org.slf4j.Logger;
@@ -375,7 +375,7 @@ public class RefererFilter implements Filter {
 }
 ```
 
-##其它的一些东东
+## 其它的一些东东
 在浏览器里如何访问IPV6的地址？
 
 用"[]"把IPV6地址包围起来，比如localhost的：
@@ -383,7 +383,7 @@ public class RefererFilter implements Filter {
 http://[::1]
 ```
 
-参考：
+## 参考
 
 http://superuser.com/questions/367780/how-to-connect-a-website-has-only-ipv6-address-without-domain-name
 

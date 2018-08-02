@@ -12,16 +12,17 @@ categories:
 
 最近tomcat升级版本时，遇到了ssi解析的问题，记录下解决的过程，还有tomcat ssi配置的要点。
 
-##tomcat 配置SSI的两种方式
+## tomcat 配置SSI的两种方式
 
 Tomcat有两种方式支持SSI：Servlet和Filter。
 
-###SSIServlet
+### SSIServlet
 通过Servlet，org.apache.catalina.ssi.SSIServlet，默认处理"*.shtml"的URL。
 
 配置方式：
 
 修改tomcat的 conf/web.xml文件，去掉下面配置的注释：
+
 ```xml
 <servlet>
     <servlet-name>ssi</servlet-name>
@@ -52,7 +53,7 @@ Tomcat有两种方式支持SSI：Servlet和Filter。
     <url-pattern>*.shtml</url-pattern>
 </servlet-mapping>
 ```
-###SSIFilter
+### SSIFilter
 通过Filter，org.apache.catalina.ssi.SSIFilter，默认处理"*.shtml"的URL。
  
 配置方式：
@@ -87,7 +88,7 @@ Tomcat有两种方式支持SSI：Servlet和Filter。
     <url-pattern>*.shtml</url-pattern>
 </filter-mapping>
 ```
-###注意事项
+### 注意事项
 **注意：两种配置方式最好不要同时打开，除非很清楚是怎样配置的。**
 
 另外，在Tomcat的conf/context.xml里要配置privileged="true"，否则有些SSI特性不能生效。
@@ -95,7 +96,7 @@ Tomcat有两种方式支持SSI：Servlet和Filter。
 <Context privileged="true">
 ```
 
-##历史代码里处理SSI的办法
+## 历史代码里处理SSI的办法
 在公司的历史代码里，在一个公共的jar包里通过自定义一个EnhancedSSIServlet，继承了Tomcat的org.apache.catalina.ssi.SSIServlet来实现SSI功能的。
 
 ```java
@@ -120,7 +121,7 @@ public class EnhancedSSIServlet extends SSIServlet {
 
 所以在使用到历史代码的项目都只能使用Tomcat服务器，并且不能在tomcat的conf/web.xml里打开SSI相关的配置。
 
-##Tomcat版本升级的问题
+## Tomcat版本升级的问题
 Tomcat版本从7.0.57升级到7.0.59过程中，出现了无法解析SSI include指令的错误：
 ```java
 SEVERE: #include--Couldn't include file: /pages/test/intelFilter.shtml
@@ -249,7 +250,7 @@ protected ServletContextAndPath getServletContextAndPathFromVirtualPath(
      }
 ```
 
-##总结
+## 总结
 之前的EnhancedSSIServlet类的配置就不支持"#include virtual="/b.shtml"，这种绝对路径的SSI指令，而以前版本的Tomcat因为恰好处理了"/test.shtml"这种以"/"开头的url，因此以前版本的Tomcat没有报错。而升级后的Tomcat修正了代码，不再处理这种不合理的绝对路径请求了，所以报“ Couldn't get context for path”的异常。
 
 把tomcat的ssi配置里的isVirtualWebappRelative设置为true就可以了。
@@ -258,5 +259,5 @@ protected ServletContextAndPath getServletContextAndPathFromVirtualPath(
 
 **tomcat是如何知道处理*.jsp请求的？是哪个servlet在起作用？**
 
-##参考
+## 参考
 https://tomcat.apache.org/tomcat-7.0-doc/ssi-howto.html

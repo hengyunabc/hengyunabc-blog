@@ -11,7 +11,7 @@ categories:
  
 ---
 
-##缘起
+## 缘起
 
 在看资料时，看到这样的防止iframe嵌套的代码：
 ```javascript
@@ -53,7 +53,7 @@ URI的语法：
 
 http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
 
-##在javascript里解析url最好的办法
+## 在javascript里解析url最好的办法
 
 在javascript里解析url的最好办法是利用浏览器的js引擎，通过创建一个a标签：
 ```javascript
@@ -66,7 +66,7 @@ var l = getLocation("http://example.com/path");
 console.debug(l.hostname)
 ```
 
-##简洁防iframe恶意嵌套的方法
+## 简洁防iframe恶意嵌套的方法
 
 下面给出一个简洁的防止iframe恶意嵌套的判断方法：
 ```javascript
@@ -85,7 +85,7 @@ if(window.top != window && document.referrer){
 }
 ```
 
-##java里处理URL的方法
+## java里处理URL的方法
 http://docs.oracle.com/javase/tutorial/networking/urls/urlInfo.html
 
 用contain, indexOf, endWitch这些函数时都要小心。
@@ -107,7 +107,7 @@ http://docs.oracle.com/javase/tutorial/networking/urls/urlInfo.html
     }
 ```
 
-##参考
+## 参考
 
 http://stackoverflow.com/questions/736513/how-do-i-parse-a-url-into-hostname-and-path-in-javascript
 

@@ -10,7 +10,7 @@ categories:
  
 ---
 
-##项目信息
+## 项目信息
 
 https://github.com/yahoo/kafka-manager
 
@@ -22,7 +22,7 @@ Kafka web console的安装可以参考之前的blog：
 
 http://blog.csdn.net/hengyunabc/article/details/40431627
 
-##安装sbt
+## 安装sbt
 sbt是scala的打包构建工具。
 
 http://www.scala-sbt.org/download.html
@@ -34,7 +34,7 @@ sudo apt-get update
 sudo apt-get install sbt
 ```
 
-##下载，编绎
+## 下载，编绎
 
 编绎，生成发布包：
 
@@ -48,7 +48,7 @@ sbt clean dist
 
 如果打包很慢的话，可以考虑配置代理。
 
-##部署
+## 部署
 打好包好，在部署机器上解压，修改好配置文件，就可以运行了。
 - 解压
 
@@ -83,7 +83,7 @@ nohup ./kafka-manager -Dconfig.file=../conf/application.conf >/dev/null 2>&1 &
 
 
 
-##sbt 配置代理
+## sbt 配置代理
 sbt的配置http代理的参考文档：
 
 http://www.scala-sbt.org/0.12.1/docs/Detailed-Topics/Setup-Notes.html#http-proxy
@@ -104,7 +104,7 @@ export SBT_OPTS="$SBT_OPTS -Dhttp.proxyHost=myproxy -Dhttp.proxyPort=myport"
 export SBT_OPTS="$SBT_OPTS -Dhttp.proxyHost=localhost -Dhttp.proxyPort=8123"
 ```
 
-##打好的一个包
+## 打好的一个包
 
 如果打包有问题的小伙伴可以从这里下载：
 

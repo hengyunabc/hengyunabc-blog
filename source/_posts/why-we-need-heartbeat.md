@@ -53,7 +53,7 @@ TCP_KEEPINTVL 覆盖 tcp_keepalive_intvl，默认75（秒）
  ```
 
 ## tcp keep-alive的本质
-###TCP keep-alive probe
+### TCP keep-alive probe
 上面了解了tcp keep-alive的一些参数，下面来探究下其本质。
 
 在远程机器192.168.66.123上，用nc启动一个TCP服务器：
@@ -84,7 +84,7 @@ s.connect(('192.168.66.123', 9999))
 
 可以看到，当远程服务器192.168.66.123网络失去连接之后，本地机器（192.168.66.120）每隔一秒重发了9次tcp keep-alive probe，最终认为这个TCP连接已经失效，发了一个RST包给192.168.66.123。
 
-###三个参数的具体意义 
+### 三个参数的具体意义 
 TCP_KEEPIDLE ：这个参数是多久没有发送数据时，开始发送Keep-Alive包的时间，也就是链路空闲时间。
 TCP_KEEPINTVL：这个参数是指发送Keep-Alive probe后，对方多久没有回应，然后重新再发送keep alive probe的时间间隔
 TCP_KEEPCNT：这个参数指，连续发送多少次keep alive probe，对方没有回应，认为连接已经失效的重试次数
@@ -93,17 +93,17 @@ TCP_KEEPCNT：这个参数指，连续发送多少次keep alive probe，对方�
 
 ## 为什么应用层需要heart beat/心跳包？
 
-###默认的tcp keep-alive超时时间太长
+### 默认的tcp keep-alive超时时间太长
 默认是7200秒，也就是2个小时。
 
-###socks proxy会让tcp keep-alive失效
+### socks proxy会让tcp keep-alive失效
 socks协议只管转发TCP层具体的数据包，而不会转发TCP协议内的实现细节的包（也做不到），[参考socks_proxy](http://hengyunabc.github.io/something-about-science-surf-the-internet/#socks_proxy)。
 
 所以，一个应用如果使用了socks代理，那么tcp keep-alive机制就失效了，所以应用要自己有心跳包。
 
 **socks proxy只是一个例子，真实的网络很复杂，可能会有各种原因让tcp keep-alive失效。**
 
-###移动网络需要信令保活
+### 移动网络需要信令保活
 前两年，微信信令事件很火，搜索下“微信 信令”或者“移动网络 信令”可以查到很多相关文章。
 
 这里附上一个链接：[微信的大规模使用真的会过多占用信令，影响通讯稳定吗？](http://www.zhihu.com/question/20849677/answer/16384522)
