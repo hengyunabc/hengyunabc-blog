@@ -34,4 +34,6 @@ categories:
 * [深入Spring Boot：排查expected single matching bean but found 2的异常](/spring-boot-expected-single-but-found-2)
 * [深入Spring Boot：排查@Transactional引起的NullPointerException](/spring-boot-transactional-nullpointerexception)
 * [深入Spring Boot：显式配置 @EnableWebMvc 导致静态资源访问失败](/spring-boot-enablewebmvc-static-404)
+* [深入Spring Boot：利用Arthas排查NoSuchMethodError](/spring-boot-arthas-NoSuchMethodError)
+
 
