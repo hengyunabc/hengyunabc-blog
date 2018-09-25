@@ -1,6 +1,6 @@
 ---
 title: 深入Spring Boot：利用Arthas排查NoSuchMethodError
-date: 2016-04-03 20:58:28
+date: 2018-09-25 20:58:28
 tags:
  - spring
  - spring-boot
@@ -18,6 +18,8 @@ categories:
 ## 前言
 
 有时spring boot应用会遇到`java.lang.NoSuchMethodError`的问题，下面以具体的demo来说明怎样利用[arthas](https://github.com/alibaba/arthas)来排查。
+
+Demo: https://github.com/hengyunabc/spring-boot-inside/tree/master/demo-NoSuchMethodError
 
 ## 在应用的main函数里catch住异常，保证进程不退出
 
