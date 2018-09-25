@@ -16,7 +16,7 @@ categories:
 
 ## 问题
 
-* 可重现的Demo代码：[demo.zip](/img/demo.zip)
+* 可重现的Demo代码：https://github.com/hengyunabc/spring-boot-inside/tree/master/demo-hibernate-validator-NoClassDefFoundError
 
 最近排查一个spring boot应用抛出hibernate.validator NoClassDefFoundError的问题，异常信息如下：
 

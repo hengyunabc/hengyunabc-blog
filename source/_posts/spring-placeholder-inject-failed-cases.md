@@ -67,7 +67,7 @@ Spirng在生命周期里关于Bean的处理大概可以分为下面几步：
 
 ## 例子1：Mybatis 的 MapperScannerConfigurer引起的占位符没有处理
 
-例子代码：[mybatis-demo.zip](https://github.com/hengyunabc/hengyunabc.github.io/files/1158339/mybatis-demo.zip)
+例子代码：https://github.com/hengyunabc/spring-boot-inside/tree/master/demo-mybatis-placeholder
 
 * 首先应用自己在代码里创建了一个`DataSource`，其中`${db.user}`是希望从`application.properties`里注入的。代码在运行时会打印出`user`的实际值。
 
@@ -137,7 +137,7 @@ environment.resolvePlaceholders("${db.user}")
 
 ## 例子2：Spring boot自身实现问题，导致Bean被提前初始化
 
-例子代码：[demo.zip](https://github.com/spring-projects/spring-boot/files/773587/demo.zip)
+例子代码：https://github.com/hengyunabc/spring-boot-inside/tree/master/demo-ConditionalOnBean-placeholder
 
 Spring Boot里提供了`@ConditionalOnBean`，这个方便用户在不同条件下来创建bean。里面提供了判断是否存在bean上有某个注解的功能。
 
