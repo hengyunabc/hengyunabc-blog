@@ -17,7 +17,7 @@ branches:
     - master 
 
 before_install:
-  - npm install -g hexo-cli
+  - npm install -g hexo-cli@1.1.0
   # use sed to replace the SSH URL with the public URL, then init and update submodules
   - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   - git submodule update --init --recursive
@@ -25,7 +25,6 @@ before_install:
 # Start: Build Lifecycle
 install:
   - npm install
-  - npm install hexo-deployer-git --save
 
 script:
   - hexo clean
