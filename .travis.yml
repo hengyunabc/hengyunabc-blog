@@ -8,12 +8,19 @@ cache:
   directories:
     - node_modules
 
+# disable the default submodule logic
+git:
+  submodules: false
+
 branches:
   only:
     - master 
 
 before_install:
   - npm install -g hexo-cli
+  # use sed to replace the SSH URL with the public URL, then init and update submodules
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
 
 # Start: Build Lifecycle
 install:
