@@ -49,7 +49,7 @@ Local file header signature = 0x04034b50 (read as a little-endian number)
 
 参考：https://en.wikipedia.org/wiki/Zip_(file_format)
 
-zip处理软件是读取到magic number才开始处理。所以在linux/unix下面，可以把一个bash文件直接写在一个zip文件的开头，这样子会被认为是一个bash script。 而zip处理软件在读取这个文件时，仍然可以正确地处理。
+**zip处理软件是读取到magic number才开始处理。所以在linux/unix下面，可以把一个bash文件直接写在一个zip文件的开头，这样子会被认为是一个bash script。 而zip处理软件在读取这个文件时，仍然可以正确地处理。**
 
 比如spring boot生成的executable jar/war，的开头是：
 
@@ -77,7 +77,7 @@ PK^C^D
 
 实际上spring boot maven plugin是把下面这个script打包到fat jar的最前面部分。
 
-https://github.com/spring-projects/spring-boot/blob/1ca9cdabf71f3f972a9c1fdbfe9a9f5fda561287/spring-boot-tools/spring-boot-loader-tools/src/main/resources/org/springframework/boot/loader/tools/launch.script 
+https://github.com/spring-projects/spring-boot/blob/v1.5.18.RELEASE/spring-boot-tools/spring-boot-loader-tools/src/main/resources/org/springframework/boot/loader/tools/launch.script 
 
 这个launch.script 支持很多变量设置。还可以自动识别是处于`auto`还是`service`不同mode中。
 
@@ -94,6 +94,13 @@ service demo start/stop/restart/status
 ```
 
 所以fat jar可以直接在普通的命令行里执行，`./xxx.jar` 或者link到`/etc/init.d/`下，变为一个service。
+
+## 总结
+
+* jar/war实际就是zip格式
+* spring-boot-maven-plugin把启动脚本打到executable jar/war的最前面
+* 脚本的最后一行是`exit 0`，脚本只执行自己的内容，不会执行到jar/war里的内容
+* zip文件由多个entry组成，entry的开头有magic number，所以zip处理软件可以跳过前面的脚本，准确找到zip entry
 
 
 
