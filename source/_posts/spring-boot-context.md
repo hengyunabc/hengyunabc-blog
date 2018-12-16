@@ -202,9 +202,33 @@ public void merge(ConfigurableEnvironment parent) {
 }
 ```
 
+## 怎样在Spring Event里正确判断事件来源
+
+默认情况下，Spring Child Context会收到Parent Context的Event。如果Bean依赖某个Event来做初始化，那么就要判断好Event是否Bean所在的Context发出的，否则有可能提前或者多次初始化。
+
+正确的做法是实现`ApplicationContextAware`接口，先把`context`保存起来，在`Event`里判断相等时才处理。
+
+```java
+public class MyBean implements ApplicationListener<ContextRefreshedEvent>, ApplicationContextAware {
+	private ApplicationContext context;
+	@Override
+	public void onApplicationEvent(ContextRefreshedEvent event) {
+		if (event.getApplicationContext().equals(context)) {
+			// do something
+		}
+	}
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		this.context = applicationContext;
+	}
+}
+```
+
+
 ## 总结
 
 * 当配置`management.port` 为独立端口时，`Management Spring Context`也会是独立的context，它的parent是应用的spring context
 * 当启动spring cloud时，spring cloud自己会创建出一个spring context，并置为应用的context的parent
 * `ApplicationContext.setParent(ApplicationContext)` 主要是把parent的environment里的propertySources加到child里
+* 正确处理Spring Event，判断属于自己的Context和Event
 * 理解的spring boot context的继承关系，能避免一些微妙的spring bean注入的问题，还有不当的spring context的问题
