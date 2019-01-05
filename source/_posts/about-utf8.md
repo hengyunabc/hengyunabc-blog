@@ -243,3 +243,5 @@ hessian里的字符是utf8编码的。参考 http://hessian.caucho.com/doc/hessi
 * The Go Programming Language Specification http://golang.org/ref/spec
 
 * 微软的Unicode的一个文档： http://msdn.microsoft.com/en-us/goglobal/bb688113.aspx  
+
+* 其实你并不懂 Unicode： https://zhuanlan.zhihu.com/p/53714077 
