@@ -159,7 +159,7 @@ Caused by: java.lang.NoSuchMethodError: org.jboss.logging.Logger.getMessageLogge
 
     ```
     Caused by: java.lang.NoClassDefFoundError: Could not initialize class org.hibernate.validator.internal.engine.ConfigurationImpl
-    ````
+    ```
 
 ## 深入JVM
 

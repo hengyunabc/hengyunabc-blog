@@ -187,7 +187,6 @@ public class HystrixCommandAspect {
     ```java
     @Configuration
     public class HystrixCircuitBreakerConfiguration {
-
         @Bean
         public HystrixCommandAspect hystrixCommandAspect() {
             return new HystrixCommandAspect();
