@@ -50,7 +50,7 @@ https://book.douban.com/subject/30244461/
 
 ## 新教伦理与资本主义精神
 
-https://book.douban.com/subject/25728591/
+https://book.douban.com/subject/6436046/
 
 推荐。这本书说的是新教怎么影响资本主义的。翻译的版本里有一些很不错的配图，导致我一开始以为是80/90年代的书，但看到中间时，感觉不太对，去查了下，发现是1905年出版的，十分惊讶。
 
