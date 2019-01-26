@@ -54,7 +54,7 @@ Spirng在生命周期里关于Bean的处理大概可以分为下面几步：
 当然这只是比较理想的状态，实际上因为Spring Context在构造时，也需要创建很多内部的Bean，应用在接口实现里也会做自己的各种逻辑，整个流程会非常复杂。
 
 
-那么占位符（${}表达式）是在什么时候被处理的？
+那么占位符（`${}表达式`）是在什么时候被处理的？
 
 * 实际上是在`org.springframework.context.support.PropertySourcesPlaceholderConfigurer`里处理的，它会访问了每一个bean的BeanDefinition，然后做占位符的处理
 * `PropertySourcesPlaceholderConfigurer`实现了`BeanFactoryPostProcessor`接口
@@ -90,18 +90,15 @@ Spirng在生命周期里关于Bean的处理大概可以分为下面几步：
     ```java
     @Configuration
     public class MybatisConfig1 {
-
     	@Bean(name = "sqlSessionFactory1")
     	public SqlSessionFactory sqlSessionFactory1(DataSource dataSource1) throws Exception {
     		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
     		org.apache.ibatis.session.Configuration ibatisConfiguration = new org.apache.ibatis.session.Configuration();
     		sqlSessionFactoryBean.setConfiguration(ibatisConfiguration);
-
     		sqlSessionFactoryBean.setDataSource(dataSource1);
     		sqlSessionFactoryBean.setTypeAliasesPackage("sample.mybatis.domain");
     		return sqlSessionFactoryBean.getObject();
     	}
-
     	@Bean
     	MapperScannerConfigurer mapperScannerConfigurer(SqlSessionFactory sqlSessionFactory1) {
     		MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
