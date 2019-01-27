@@ -36,5 +36,5 @@ categories:
 * [深入Spring Boot：显式配置 @EnableWebMvc 导致静态资源访问失败](/spring-boot-enablewebmvc-static-404)
 * [深入Spring Boot：利用Arthas排查NoSuchMethodError](/spring-boot-arthas-NoSuchMethodError)
 * [Arthas实践--快速排查Spring Boot应用404/401问题](/arthas-spring-boot-404-401)
-
+* [Alibaba Arthas实践--获取到Spring Context，然后为所欲为](/arthas-spring-context)
 
