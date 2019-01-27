@@ -17,7 +17,7 @@ categories:
 
 Arthas 是Alibaba开源的Java诊断工具，深受开发者喜爱。
 
-Arthas Issues里经常有提问怎么排查内存问题。首先，排查内存问题，最好的办法是heapdump
+* https://github.com/alibaba/arthas
 
 Arthas提供了非常丰富的关于调用拦截的命令，比如 trace/watch/monitor/tt 。但是很多时候我们在排查问题时，需要更多的线索，并不只是函数的参数和返回值。
 比如在一个spring应用里，想获取到spring context里的其它bean。如果能随意获取到spring bean，那就可以“为所欲为”了。
