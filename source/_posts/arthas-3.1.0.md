@@ -1,5 +1,5 @@
 ---
-title: Alibaba Arthas 3.1.0版本：在线教程、内存编绎器和强大的自动补全
+title: Alibaba Arthas 3.1.0版本：在线教程、内存编译器和强大的自动补全
 date: 2019-02-13 16:58:28
 tags:
  - arthas
@@ -15,7 +15,12 @@ categories:
 
 ![Arthas](https://alibaba.github.io/arthas/_images/arthas.png)
 
+`Arthas`是Alibaba开源的Java诊断工具，深受开发者喜爱。
 从Arthas上个版本发布，已经过去两个多月了，Arthas 3.1.0版本不仅带来大家投票出来的新LOGO，还带来强大的新功能和更好的易用性，下面一一介绍。
+
+* Github： https://github.com/alibaba/arthas
+* 文档：https://alibaba.github.io/arthas
+
 
 ### 在线教程
 
@@ -26,7 +31,7 @@ categories:
 
 非常欢迎大家来完善这些教程。
 
-### 增加内存编绎器支持，在线编辑热更新代码
+### 增加内存编译器支持，在线编辑热更新代码
 
 `3.1.0`版本里新增命令`mc`，不是方块游戏mc，而是Memory Compiler。
 
@@ -36,13 +41,13 @@ categories:
 
 以 [Arthas在线教程](https://alibaba.github.io/arthas/arthas-tutorials?language=cn&id=arthas-advanced) 里的`UserController`为例：
 
-1. 使用jad反编绎代码
+1. 使用jad反编译代码
 
     ```bash
     jad --source-only com.example.demo.arthas.user.UserController > /tmp/UserController.java
     ```
 
-2. 使用vim编绎代码
+2. 使用vim编译代码
 
     当 user id 小于1时，也正常返回，不抛出异常：
 
@@ -59,7 +64,7 @@ categories:
             }
         }
     ```
-3. 使用`mc`命令编绎修改后的`UserController.java`
+3. 使用`mc`命令编译修改后的`UserController.java`
 
     ```bash
     $ mc /tmp/UserController.java -d /tmp
@@ -121,6 +126,6 @@ Arthas支持Docker镜像了
 * Arthas在线教程可以学到很多技巧
 * jad/mc/redefine 一条龙非常强大
 * 丝滑的自动补全值得尝试
-* 新版本的Web console有惊奇
+* 新版本的Web Console有惊奇
 
 Release Note: https://github.com/alibaba/arthas/releases/tag/3.1.0
