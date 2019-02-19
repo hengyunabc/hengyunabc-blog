@@ -1,5 +1,5 @@
 ---
-title: Arthas实践--jad/mc/redefine热更新一条龙
+title: Arthas实践--jad/mc/redefine线上热更新一条龙
 date: 2019-02-19 20:58:28
 tags:
  - java
