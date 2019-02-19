@@ -1,5 +1,5 @@
 ---
-title: Arthas实践--jad/mc/redefine一条龙
+title: Arthas实践--jad/mc/redefine热更新一条龙
 date: 2019-02-19 20:58:28
 tags:
  - java
@@ -137,7 +137,7 @@ Arthas里 `jad`/`mc`/`redefine` 一条龙来线上热更新代码，非常强大
 * 应用的安全主要靠用户权限本身的管理
 * Arthas主要是让jvm redefine更容易了。用户也可以利用其它工具达到同样的效果
 
-最后，Arthas提醒您： 诊断千万条，规范第一条，热更不规范，同事两行泪。
+最后，Arthas提醒您： **诊断千万条，规范第一条，热更不规范，同事两行泪**。
 
 ## Arthas实践系列
 
