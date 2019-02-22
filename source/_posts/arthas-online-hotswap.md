@@ -66,7 +66,7 @@ Arthas是阿里巴巴开源的Java应用诊断利器，深受开发者喜爱。
 jad --source-only com.example.demo.arthas.user.UserController > /tmp/UserController.java
 ```
 
-## 修改反编绎出来的代码
+## 修改反编译出来的代码
 
 用文本编辑器修改`/tmp/UserController.java`，把抛出异常改为正常返回：
 
@@ -91,7 +91,7 @@ $ sc -d *UserController | grep classLoaderHash
 
 可以发现是spring boot的 `LaunchedURLClassLoader@1be6f5c3` 加载的。
 
-## mc内存编绎代码
+## mc内存编译代码
 
 保存好`/tmp/UserController.java`之后，使用mc(Memory Compiler)命令来编译，并且通过`-c`参数指定`ClassLoader`：
 
