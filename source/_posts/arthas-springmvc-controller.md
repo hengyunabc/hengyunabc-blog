@@ -104,7 +104,7 @@ ts=2019-06-04 11:38:06; [cost=2.75218ms] result=@HandlerExecutionChain[
 ]
 ```
 
-可以看到处理请求的handler是 `om.example.demo.arthas.user.UserController.findUserById`。
+可以看到处理请求的handler是 `com.example.demo.arthas.user.UserController.findUserById`。
 
 ## 总结
 
