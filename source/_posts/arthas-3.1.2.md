@@ -266,7 +266,7 @@ id        URJZ5L48RPBR2ALI5K4V
 以上面的为例，在浏览器里访问 [http://47.75.156.201:8080/](http://47.75.156.201:8080/) ，输入 `agentId`，就可以连接到本机上的arthas了。
 
 
-![](_static/arthas-tunnel-server.png)
+![](https://alibaba.github.io/arthas/_images/arthas-tunnel-server.png)
 
 
 #### Arthas tunnel server的工作原理
