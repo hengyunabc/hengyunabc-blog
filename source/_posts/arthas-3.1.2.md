@@ -1,5 +1,5 @@
 ---
-title: Alibaba Arthas 3.1.2版本：增加logger/heapdump/vmoption命令，支持tunnel server
+title: Alibaba Arthas 3.1.2版本:增加logger/heapdump/vmoption命令,支持tunnel server
 date: 2019-09-09 20:58:28
 tags:
  - arthas
