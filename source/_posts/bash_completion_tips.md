@@ -13,6 +13,8 @@ categories:
 
 ## 在bash里补全历史命令
 
+本文介绍本人觉得最好用的bash配置技巧，一次配置，每天受益。
+
 在bash里，最常见的搜索历史命令的办法是`ctrl + r`，但是这个步骤太多，比较麻烦。
 
 下面介绍一种非常快捷的补全方式。
@@ -44,5 +46,7 @@ set completion-ignore-case on
 
 `completion-ignore-case` 是指tab补全时，忽略大小写，这点也非常方便。
 
-题外话，在arthas里也支持了`Up/Down`自动补全历史命令这个特性，所以在arthas里自动补全历史命令非常的方便。
+> 注意，在修改完`~/.inputrc`文件，要显式执行`bind -f  ~/.inputrc`才会生效。
+
+题外话，在`arthas`里也支持了`Up/Down`自动补全历史命令这个特性，所以在`arthas`里自动补全历史命令非常的方便。
 
