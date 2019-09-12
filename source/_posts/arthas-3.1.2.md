@@ -1,5 +1,5 @@
 ---
-title: Alibaba Arthas 3.1.2版本:增加logger/heapdump/vmoption命令,支持tunnel server
+title: Alibaba Arthas 3.1.2版本增加logger/heapdump/vmoption命令，增加tunnel server功能
 date: 2019-09-09 20:58:28
 tags:
  - arthas
@@ -211,7 +211,7 @@ PrintGCDetails=true
 
 ### stop命令
 
-之前有用户吐槽，不小心退出Arthas console之后，`shutdown`会关闭系统，因些增加了`stop`命令来退出arthas，功能和`shutdown`命令一致。
+之前有用户吐槽，不小心退出Arthas console之后，`shutdown`会关闭系统，因此增加了`stop`命令来退出arthas，功能和`shutdown`命令一致。
 
 
 ## 通过tunnel server连接不同网络的arthas
