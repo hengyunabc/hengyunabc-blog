@@ -27,7 +27,7 @@ Arthas 3.1.5版本带来下面全新的特性：
 * monitor/tt/trace等命令提供更精确的时间统计
 * telnet/http协议共用3658端口
 
-## Profiler/Frame Graph/火焰图
+## Profiler/Flame Graph/火焰图
 
 火焰图的威名相信大家都有所耳闻，但可能因为使用比较复杂，所以望而止步。
 
