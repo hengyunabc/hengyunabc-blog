@@ -35,7 +35,7 @@ Arthas 3.1.5版本带来下面全新的特性：
 
 * profiler命令wiki: https://alibaba.github.io/arthas/profiler.html
 
-`profiler` 命令基本运行结构是 `profiler action [actionArg]`。下面介绍如何使用。
+`profiler` 命令基本运行结构是 `profiler action [actionArg]`。 下面介绍如何使用。
 
 ### 启动profiler
 
